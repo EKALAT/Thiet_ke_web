@@ -1,16 +1,12 @@
 *{
-/* Oxford Blue  */
-color: #03254c;
-
-/* Green Blue  */
-color: #1167b1;
-
-/* Bright Navy Blue  */
-color: #187bcd;
-
-/* Bluebonnet  */
-color: #2a0df4;
-
-/* Water  */
-color:#d0efff;
+    color: #265077;
+        /* rgb(38,80,119)  */
+    color: #022140;
+        /* rgb(2,33,64)  */
+    color: #494b68;
+        /* rgb(73,75,104)  */
+    color: #1e4258;
+        /* rgb(30,66,88) */
+    color: #2d5f5d;
+        /* rgb(45,95,93)  */
 }
