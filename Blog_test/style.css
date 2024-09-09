@@ -1,0 +1,83 @@
+*{
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+}
+.heading1 {
+     font-family: "Nerko One", cursive;
+     font-weight: 100;
+     font-size: 80px;
+}
+
+textarea {
+     display: block;
+}
+
+html{
+     font-family: 'New Amsterdam', sans-serif;
+}
+.container{
+     width: 1140px;
+     margin: 0 auto;
+     background-color: rgb(243, 235, 228);
+     padding: 20px;
+     overflow: hidden;
+}
+.content{
+     width: 75%;
+     float: left;
+}
+
+.form{
+     width: 40%;
+     float: left;
+     margin-top: 20px; /* Add space to separate from content */
+     clear: both; /* Clears the float so the form moves below */
+}
+
+input, textarea{
+     display: block;
+}
+input{
+     margin: 20px;
+     width: 200px;
+     padding: 10px 20px;
+}
+textarea{
+     width: 200px;
+     margin-left: 20px;
+     padding: 20px;
+}
+
+
+h1{
+     color:blue;
+     font-size: 50px;
+     margin-bottom: 15px;
+}
+h2{
+     color:red;
+     font-size: 50px;
+     margin-bottom: 15;;
+}
+
+.clearfix{
+     content: "";
+     display: table;
+     clear: both;
+}
+.avatar img {
+     border-radius: 50%; /* Makes the image circular */
+     width: 150px; /* Set the desired size */
+     height: 150px; /* Maintain equal width and height to make it circular */
+     object-fit: cover; /* Ensures the image covers the space evenly */
+     float: left;
+}
+h3{
+     float: left;
+     margin-top: 60px;
+     margin-left: 30px;
+}
+.info{
+     margin-top: 20px;
+}
