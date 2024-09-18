@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Current Time</title>
+    <style>
+        /* Centering the text */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Centers text horizontally */
+            margin: 0; /* Remove default margin */
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Centers content horizontally */
+            align-items: center; /* Centers content vertically */
+        }
+        #timeDisplay { /* Corrected selector for ID */
+            font-size: 100px; /* Adjust font size */
+            color: #3005f1; /* Set text color */
+        }
+    </style>
+</head>
+<body>
+    <p id="timeDisplay">Loading time...</p> <!-- Placeholder for time display -->
+
+    <script>
+        // Function to update the time display
+        function updateTime() {
+            var D = new Date();
+            var hours = D.getHours();
+            var minutes = D.getMinutes();
+            // Format hours and minutes to be two digits
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            // Update the content of the HTML element with the current time
+            document.getElementById('timeDisplay').innerText = 
+                "Bây giờ là: " + hours + " giờ " + minutes + " phút.";
+        }
+
+        // Call the function to update the time when the page loads
+        updateTime();
+    </script>
+</body>
+</html>

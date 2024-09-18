@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Light Bulb</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.5s ease; /* Smooth transition for background color */
+        }
+
+        img {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 5px solid #ffeb3b; /* Yellow border to highlight the image */
+            border-radius: 10px; /* Rounded corners */
+            width: 150px; /* Increased size */
+            height: 150px; /* Increased size */
+            margin-top: 10px;
+        }
+
+        img:hover {
+            transform: scale(1.2); /* Slightly zoom in on hover */
+        }
+
+        h1 {
+            color: #0011ff; /* Bright orange for the heading */
+            margin-bottom: 10px;
+            font-size: 2rem; /* Increased font size for better visibility */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <script language="javascript">
+        var bLight = 0;
+
+        function changeimage() {
+            var img = document.getElementById('lightBulbImage');
+            var body = document.body;
+
+            if (bLight == 0) {
+                bLight = 1;
+                img.src = "https://img.icons8.com/ios-filled/150/000000/light-on.png"; // Larger image for bulb on
+                body.style.backgroundColor = '#ffeb3b'; // Light yellow background for 'on' state
+            } else {
+                bLight = 0;
+                img.src = "https://img.icons8.com/ios-filled/150/000000/light-off.png"; // Larger image for bulb off
+                body.style.backgroundColor = '#f0f8ff'; // Light blue background for 'off' state
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Click the Image to Toggle the Light</h1>
+        <img id="lightBulbImage" onclick="changeimage()" src="https://img.icons8.com/ios-filled/150/000000/light-off.png" alt="Light Bulb">
+    </div>
+</body>
+</html>

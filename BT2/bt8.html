@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change on Hover</title>
+    <style>
+        /* Basic styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        /* Styling for the container */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        /* Styling for each color square */
+        .color-box {
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+
+        /* Colors for the squares */
+        .red {
+            background-color: red;
+        }
+
+        .blue {
+            background-color: blue;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+    <script>
+        function changeBackgroundColor(color) {
+            // Change the body's background color
+            document.body.style.backgroundColor = color;
+        }
+
+        function resetBackgroundColor() {
+            // Reset the body's background color to default
+            document.body.style.backgroundColor = '#f0f0f0';
+        }
+    </script>
+</head>
+<body>
+    <h1>Mouse over the squares and the background color will change!</h1>
+    <div class="container">
+        <!-- Color squares that change the background color on hover -->
+        <div class="color-box red" onmouseover="changeBackgroundColor('red')" onmouseout="resetBackgroundColor()"></div>
+        <div class="color-box blue" onmouseover="changeBackgroundColor('blue')" onmouseout="resetBackgroundColor()"></div>
+        <div class="color-box green" onmouseover="changeBackgroundColor('green')" onmouseout="resetBackgroundColor()"></div>
+    </div>
+</body>
+</html>

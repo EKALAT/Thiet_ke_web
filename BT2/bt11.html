@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff; /* Light background color */
+        }
+        .container {
+            max-width: 500px; /* Increased width */
+            padding: 30px; /* Increased padding */
+            background-color: #50fff9; /* Colorful background for the calculator */
+            border-radius: 15px; /* Increased border radius */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+            text-align: center;
+        }
+        div {
+            margin-bottom: 25px; /* Increased margin for spacing */
+        }
+        label {
+            display: block;
+            margin-bottom: 15px; /* Increased margin for better spacing */
+            font-weight: bold;
+            font-size: 22px; /* Increased font size */
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 20px; /* Increased padding for better usability */
+            margin: 0 auto; /* Center alignment */
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 8px; /* Increased border radius */
+            font-size: 22px; /* Increased font size */
+        }
+        button {
+            width: 70px; /* Increased width */
+            height: 70px; /* Increased height */
+            margin: 10px; /* Increased margin */
+            background-color: #4CAF50; /* Green background color */
+            color: white;
+            border: none;
+            border-radius: 8px; /* Increased border radius */
+            cursor: pointer;
+            font-size: 28px; /* Increased font size */
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <label for="num1">Số thứ nhất</label>
+            <input type="text" id="num1" value="5">
+        </div>
+        <div class="button-container">
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('*')">*</button>
+            <button onclick="calculate('/')">/</button>
+            <button onclick="calculate('^')">^</button>
+        </div>
+        <div>
+            <label for="num2">Số thứ hai</label>
+            <input type="text" id="num2" value="6">
+        </div>
+        <div>
+            <label for="result">Kết quả</label>
+            <input type="text" id="result" value="11" readonly>
+        </div>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            let result;
+
+            switch(operation) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                case '^':
+                    result = Math.pow(num1, num2);
+                    break;
+            }
+
+            document.getElementById('result').value = result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Age</title>
+</head>
+<body>
+    <script>
+        var D = new Date();
+        var NamSinh, NamHienTai;
+
+        // Get the current year
+        NamHienTai = D.getFullYear();
+
+        // Prompt user for birth year
+        NamSinh = prompt("Bạn sinh năm bao nhiêu? :", "");
+
+        // Convert NamSinh to a number
+        NamSinh = parseInt(NamSinh, 10);
+
+        // Calculate and display age
+        if (!isNaN(NamSinh)) {
+            alert("Tuổi của bạn bây giờ là: " + (NamHienTai - NamSinh));
+        } else {
+            alert("Vui lòng nhập một năm hợp lệ.");
+        }
+    </script>
+</body>
+</html>

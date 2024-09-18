@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Orders</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your orders</h2>
+    <form name="frmList" action="Process.php" method="post">
+        <table>
+            <tr>
+                <th><input type="checkbox" name="chkall" onClick="docheck(document.frmList.chkall.checked);"></th>
+                <th>Order No</th>
+                <th>Customer Name</th>
+                <th>Order Date</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="chkid" value="SHD11" onClick="docheckone();"></td>
+                <td>SHD 11</td>
+                <td>Nguyen Van A</td>
+                <td>12/2/2009</td>
+                <td><input type="text" name="value[]" value="20000"></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="chkid" value="SHD12" onClick="docheckone();"></td>
+                <td>SHD 12</td>
+                <td>Nguyen Bich Thao</td>
+                <td>12/11/2009</td>
+                <td><input type="text" name="value[]" value="55000"></td>
+            </tr>
+            <tr>
+                <td colspan="4" align="right">Total:</td>
+                <td><input type="text" name="total" readonly></td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <input type="button" value="Update" onClick="updateTotal();">
+            <input type="submit" value="Save">
+            <input type="button" value="Back" onClick="history.back();">
+            <input type="reset" value="Reset" onClick="resetForm();">
+        </div>
+    </form>
+
+    <script language="javascript">
+        function docheck(status) {
+            var num = document.frmList.chkid.length;
+            for(var i=0; i<num; i++)
+                document.frmList.chkid[i].checked = status;
+        }
+
+        function docheckone() {
+            var checked = true;
+            var num = document.frmList.chkid.length;
+            for(var i=0; i<num; i++)
+                if(document.frmList.chkid[i].checked==false) {
+                    checked = false;
+                    break;
+                }
+            document.frmList.chkall.checked = checked;
+        }
+
+        function updateTotal() {
+            var total = 0;
+            var values = document.getElementsByName('value[]');
+            for (var i = 0; i < values.length; i++) {
+                total += parseInt(values[i].value) || 0;
+            }
+            document.frmList.total.value = total;
+        }
+
+        function resetForm() {
+            document.frmList.reset();
+            docheck(false);
+            updateTotal();
+        }
+
+        // Initialize total on page load
+        updateTotal();
+    </script>
+</body>
+</html>

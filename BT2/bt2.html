@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Switch</title>
+    <style>
+        body {
+            transition: background-color 0.5s ease;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .day {
+            font-size: 50px;
+            background-color: #ffeb3b;
+            color: black;
+        }
+
+        .night {
+            font-size: 50px;
+            background-color: #0c1446;
+            color: white;
+        }
+
+        .switch-label {
+            font-size: 30px;
+            margin-top: 20px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+
+    <script language="javascript">
+        function switchlight() {
+            var check = document.frmlight.chklight;
+            var label = document.getElementById('switchLabel');
+            
+            if (check.checked) {
+                document.body.classList.remove('night');
+                document.body.classList.add('day');
+                label.textContent = "Click to change to the night"; // Update text when day mode is active
+            } else {
+                document.body.classList.remove('day');
+                document.body.classList.add('night');
+                label.textContent = "Click to change to the day"; // Update text when night mode is active
+            }
+        }
+    </script>
+</head>
+<body class="night">
+    <h1>Toggle the Light Switch</h1>
+    <form name="frmlight">
+        <input type="checkbox" name="chklight" onClick="switchlight();">
+        <label id="switchLabel" class="switch-label">Click to change to the day</label>
+    </form>
+</body>
+</html>

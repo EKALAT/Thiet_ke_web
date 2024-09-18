@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Header</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e0f7fa; /* Light cyan background */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #ff5722; /* Bright orange color */
+            transition: left 0.5s ease, color 0.5s ease, transform 0.5s ease;
+            position: relative;
+            background-color: #ffffff; /* White background for the text */
+            padding: 15px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        }
+
+        h1:hover {
+            color: #00bcd4; /* Change color on hover */
+        }
+    </style>
+    <script language="javascript">
+        function moveleft() {
+            var header = document.getElementById('header');
+            header.style.position = "absolute";
+            header.style.left = "10px"; // Moved to the left side
+        }
+
+        function moveback() {
+            var header = document.getElementById('header');
+            header.style.left = "50%"; // Move back to the center
+            header.style.transform = "translateX(-50%)"; // Maintain centering
+        }
+    </script>
+</head>
+<body>
+    <h1 id="header" onmouseover="moveleft()" onmouseout="moveback()">Mouse over this text</h1>
+</body>
+</html>

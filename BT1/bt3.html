@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+          h1 {
+                    text-align: center;
+          }
+          body {
+                    text-align: center;
+          }
+    </style>
+  </head>
+  <body>
+    <script language="JavaScript">
+      function ChangeColor() {
+          document.bgColor=frm.Mau.value;
+      }
+    </script>
+    <h1> Bạn hãy chọn màu nền</h1>
+    <form name="frm">
+          <select name="Mau" onchange="ChangeColor();">
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                    <option value="pink">Pink</option>
+                    <option value="brown">Brown</option>
+                    <option value="lavender">Lavender</option>
+                    <option value="green">Green</option>
+          </select>
+    </form>
+  </body>
+
+
+

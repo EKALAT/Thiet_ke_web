@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background-color: #ffffff; /* White background for the calculator */
+            border: 2px solid #ddd; /* Light border color */
+            border-radius: 10px;
+            padding: 20px;
+            width: 280px; /* Adjusted width */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .display {
+            background-color: #e0e0e0; /* Light gray background for the display */
+            border: 1px solid #ccc; /* Slightly darker border */
+            margin-bottom: 15px;
+            padding: 15px;
+            text-align: right;
+            font-size: 24px; /* Larger text for better readability */
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 columns for buttons */
+            gap: 5px;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px; /* Larger font size */
+            border: 1px solid #ddd;
+            background-color: #f9f9f9; /* Slightly different background color */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e0e0e0; /* Slightly darker gray on hover */
+        }
+        button.equals {
+            background-color: #4CAF50; /* Green background for the equals button */
+            color: white;
+            grid-column: span 4; /* Span across all columns */
+        }
+        button.equals:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+        button.memory-add,
+        button.memory-subtract {
+            background-color: #ff9800; /* Orange background for memory buttons */
+            color: white;
+        }
+        button.memory-add:hover,
+        button.memory-subtract:hover {
+            background-color: #fb8c00; /* Darker orange on hover */
+        }
+        .more-options {
+            margin-top: 10px;
+            text-align: center;
+        }
+        .more-options button {
+            background-color: #2196F3; /* Blue background for more options */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .more-options button:hover {
+            background-color: #1976D2; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button onclick="clearAll()">C</button>
+            <button onclick="backspace()">BkSp</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('*')">*</button>
+
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('+')">+</button>
+
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="calculate()" class="equals">=</button>
+            
+            <button onclick="appendToDisplay('0')" style="grid-column: span 2;">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button class="memory-add" onclick="memoryAdd()">M+</button>
+            <button class="memory-subtract" onclick="memorySubtract()">M-</button>
+        </div>
+        <div class="more-options">
+            <button onclick="showMoreOptions()">More Options</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let memory = 0;
+
+        function appendToDisplay(value) {
+            if (display.textContent === '0' && value !== '.') {
+                display.textContent = value;
+            } else {
+                display.textContent += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.textContent = '0';
+        }
+
+        function clearAll() {
+            display.textContent = '0';
+            memory = 0;
+        }
+
+        function backspace() {
+            display.textContent = display.textContent.slice(0, -1) || '0';
+        }
+
+        function calculate() {
+            try {
+                display.textContent = eval(display.textContent);
+            } catch (error) {
+                display.textContent = 'Error';
+            }
+        }
+
+        function squareRoot() {
+            display.textContent = Math.sqrt(parseFloat(display.textContent));
+        }
+
+        function calculatePercentage() {
+            display.textContent = parseFloat(display.textContent) / 100;
+        }
+
+        function calculateInverse() {
+            display.textContent = 1 / parseFloat(display.textContent);
+        }
+
+        function toggleSign() {
+            display.textContent = parseFloat(display.textContent) * -1;
+        }
+
+        function memoryAdd() {
+            memory += parseFloat(display.textContent);
+        }
+
+        function memorySubtract() {
+            memory -= parseFloat(display.textContent);
+        }
+
+        function showMoreOptions() {
+            alert('More options are not implemented in this demo.');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Toán Số Học</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #4d9ff7;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 100px rgba(38, 0, 255, 0.1);
+        }
+        input[type="text"], input[type="number"] {
+            font-size: 16px;
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="button"] {
+            font-size: 16px;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="button"]:hover {
+            opacity: 0.9;
+        }
+        .btn-add { background-color: #4CAF50; } /* Green */
+        .btn-sub { background-color: #f44336; } /* Red */
+        .btn-mul { background-color: #2196F3; } /* Blue */
+        .btn-div { background-color: #FFC107; } /* Yellow */
+        .btn-exp { background-color: #673AB7; } /* Purple */
+        .btn-clicked {
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <form name="formX">
+        <p>
+            <input type="text" size="4" value="12" name="a"> 
+            <input type="button" class="btn-add" value="+" onClick="a_cong_b(this)"/>
+            <input type="button" class="btn-sub" value="-" onClick="a_tru_b(this)"/>
+            <input type="button" class="btn-mul" value="x" onClick="a_nhan_b(this)"/> 
+            <input type="button" class="btn-div" value="/" onClick="a_chia_b(this)"/>
+            <input type="button" class="btn-exp" value="^" onClick="a_mu_b(this)"/> 
+            <input type="number" size="4" value="3" name="b"/> =
+            <input type="number" value="0" name="ans" size="9"/>
+        </p>
+    </form>
+
+    <script>
+        function a_cong_b(button) {
+            if (!validateInputs(button)) return;
+            updateColor(button);
+            var form = button.form;
+            var a = parseFloat(form.a.value);
+            var b = parseFloat(form.b.value);
+            var c = a + b;
+            form.ans.value = c;
+        }
+        function validateInputs(button) {
+            var form = button.form;
+            var a = form.a.value;
+            var b = form.b.value;
+            if (isNaN(a) || isNaN(b)) {
+                alert("vui lòng nhập số hợp lệ.");
+                return false;
+            }
+            return true;
+        }
+
+        function a_tru_b(button) {
+            if (!validateInputs(button)) return;
+            updateColor(button);
+            var form = button.form;
+            var a = parseFloat(form.a.value);
+            var b = parseFloat(form.b.value);
+            var c = a - b;
+            form.ans.value = c;
+        }
+
+        function a_nhan_b(button) {
+            if (!validateInputs(button)) return;
+            updateColor(button);
+            var form = button.form;
+            var a = parseFloat(form.a.value);
+            var b = parseFloat(form.b.value);
+            var c = a * b;
+            form.ans.value = c;
+        }
+
+        function a_chia_b(button) {
+            if (!validateInputs(button)) return;
+            var form = button.form;
+            var a = parseFloat(form.a.value);
+            var b = parseFloat(form.b.value);
+            if (b === 0) {
+                alert("Không thể chia cho số 0.");
+                return;
+            }
+            updateColor(button);
+            var c = a / b;
+            form.ans.value = c;
+        }
+
+        function a_mu_b(button) {
+            if (!validateInputs(button)) return;
+            updateColor(button);
+            var form = button.form;
+            var a = parseFloat(form.a.value);
+            var b = parseFloat(form.b.value);
+            var c = Math.pow(a, b);
+            form.ans.value = c;
+        }
+        
+
+        function updateColor(button) {
+            var buttons = document.querySelectorAll('input[type="button"]');
+            buttons.forEach(btn => btn.classList.remove('btn-clicked'));
+            button.classList.add('btn-clicked');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm Tra Dữ Liệu Vào</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #00ddff;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        input[type="text"] {
+            font-size: 16px;
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            font-size: 16px;
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #4CAF50;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form name="testform" onsubmit="return validate();">
+        <p>
+            Name: <input type="text" size="30" name="name">
+        </p>
+        <p>
+            Age: <input type="text" size="3" name="age">
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+        <div id="feedback" class="feedback"></div>
+    </form>
+
+    <script>
+        function validate() {
+            var digits = "0123456789";
+            var temp;
+            var name = document.testform.name.value;
+            var age = document.testform.age.value;
+            var feedback = document.getElementById('feedback');
+
+            feedback.className = 'feedback'; // Reset feedback class
+
+            if (name == "") {
+                feedback.textContent = "No Name!";
+                feedback.classList.add('error');
+                return false;
+            }
+            if (age == "") {
+                feedback.textContent = "Invalid Age!";
+                feedback.classList.add('error');
+                return false;
+            }
+            for (var i = 0; i < age.length; i++) {
+                temp = age.substring(i, i + 1);
+                if (digits.indexOf(temp) == -1) {
+                    feedback.textContent = "Invalid Age!";
+                    feedback.classList.add('error');
+                    return false;
+                }
+            }
+
+            feedback.textContent = "Form submitted successfully!";
+            feedback.classList.add('success');
+            return true;
+        }
+    </script>
+</body>
+</html>
+
+</html>

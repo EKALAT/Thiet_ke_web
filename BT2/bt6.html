@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Address Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #MainDiv {
+            background-color: #ffffff; /* White background for the container */
+            border: 2px solid #4CAF50; /* Green border */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            width: 400px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+            width: calc(100% - 22px); /* Full width minus padding */
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        #Button1 {
+            background-color: #4CAF50; /* Green background */
+            color: white;
+        }
+
+        #Button1:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .remove-button {
+            background-color: #ff5722; /* Orange background */
+            color: white;
+        }
+
+        .remove-button:hover {
+            background-color: #e64a19; /* Darker orange on hover */
+        }
+
+        .entry-container {
+            margin-bottom: 10px; /* Space between entries */
+        }
+    </style>
+</head>
+<body>
+    <div id="MainDiv">
+        Enter Your Mail Address <input id="txtAddr1" type="text" />
+        <input id="Button1" type="button" value="Add More" onclick="Button1_onclick()" />
+    </div>
+
+    <script language="javascript" type="text/javascript">
+        var NumOfRow = 1;
+
+        function Button1_onclick() {
+            NumOfRow++;
+            // Get reference to the main div
+            var mainDiv = document.getElementById('MainDiv');
+            // Create a new div to hold other controls
+            var newDiv = document.createElement('div');
+            newDiv.setAttribute('id', 'innerDiv' + NumOfRow);
+            newDiv.classList.add('entry-container');
+
+            // Create a span to hold text
+            var newSpan = document.createElement('span');
+            newSpan.innerHTML = "Enter Your Mail Address ";
+
+            // Create a new textbox
+            var newTextBox = document.createElement('input');
+            newTextBox.type = 'text';
+            newTextBox.setAttribute('id', 'txtAddr' + NumOfRow);
+
+            // Create a new Remove button
+            var newButton = document.createElement('input');
+            newButton.type = 'button';
+            newButton.value = 'Remove';
+            newButton.id = 'btn' + NumOfRow;
+            newButton.classList.add('remove-button');
+            // Set up click event for the new Remove button
+            newButton.onclick = function () {
+                var mainDiv = document.getElementById('MainDiv');
+                mainDiv.removeChild(this.parentNode);
+            };
+
+            // Append the span, textbox, and button to the new div
+            newDiv.appendChild(newSpan);
+            newDiv.appendChild(newTextBox);
+            newDiv.appendChild(newButton);
+
+            // Finally, append the new div to the main div
+            mainDiv.appendChild(newDiv);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Background</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 80px;
+            margin-bottom: 50px;
+        }
+
+        .color-button {
+            padding: 10px 20px;
+            font-size: 50px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .color-button:hover {
+            background-color: #ff001e;
+        }
+    </style>
+
+    <script language="javascript">
+        function changeColor() {
+            var mau = prompt("Nhập màu nền của trang web (ví dụ: red, blue, yellow, #FF5733, v.v.):", "");
+            // Set a default color if no input is provided
+            if (!mau) {
+                mau = "#f0e68c"; // default to khaki if no color is entered
+            }
+            
+            document.body.style.backgroundColor = mau;
+            alert("Color changed successfully!");
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <p class="welcome-text"> >>Chào mừng đến website<< </p>
+        <button class="color-button" onclick="changeColor()">Change Background Color</button>
+    </div>
+</body>
+</html>
